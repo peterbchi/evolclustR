@@ -1,6 +1,6 @@
 setwd("C:/Users/pchi01/Dropbox/Temple/Clustering/MBE-Resubmission/leptin/Figure6")
 library(tidyverse)
-
+library(gridExtra)
 
 load("test2_surface3_hominoid_1ax8.RData")
 
@@ -13,6 +13,7 @@ plot1 <- ggplot(df, aes(x=dist, fill=data_type, y = ..density..)) +
   geom_histogram(alpha=0.5, position="identity", bins=30) + 
   scale_fill_grey() +
   scale_x_continuous(name="pairwise distance") + 
+  scale_y_continuous(limits=c(0,0.25)) +
   theme(legend.position = "none") + 
   ggtitle("Hominoid Branch")
 
@@ -33,6 +34,7 @@ plot2 <- ggplot(df, aes(x=dist, fill=data_type, y = ..density..)) +
   geom_histogram(alpha=0.5, position="identity", bins=30) + 
   scale_fill_grey(name="data type") +
   scale_x_continuous(name="pairwise distance") +   
+  scale_y_continuous(limits=c(0,0.25)) +
   ggtitle("Macaca Branch")
 
 grid.arrange(plot1, plot2, nrow=1)
